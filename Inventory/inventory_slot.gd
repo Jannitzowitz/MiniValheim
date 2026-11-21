@@ -19,34 +19,16 @@ func add_item(itemdata):
 	update_slot_ui()
 
 
-func dropItme():
-	current_item_count -= 1
-	var node = World_Item.instantiate()
-	
-	node.set_meta("item_data",item)
-	node.get_node("ItemMesh").mesh = item.mesh
-	node.get_node("ItemMesh/OutlineMesh").mesh = item.mesh.create_outline(0.05)
-	node.get_node("ItemCollision").shape = item.shape
-	
-	get_tree().current_scene.add_child(node)
-	node.global_position = Vector3(randf(),1,randf())
-	if current_item_count == 0:
-		item = null
-	update_slot_ui()
-
-
 func _on_pressed() -> void:
 	if current_item_count > 0:
-		if item.item_typ == "weapon":
-			print(get_node("Inventory"))
-		else:
-			dropItme()
+		if item.typ == item.ItemTyp.WEAPON or item.typ == item.ItemTyp.WEAPON:
+			print("Ausgerüstet Waffe/Toll")
 
 
 func is_slot_free(itemdata) :
 	if current_item_count > 0:
 		if item.name == itemdata.item_data.name:        
-			if current_item_count < item.Stack_size:
+			if current_item_count < item.stack_size:
 				return true
 	elif current_item_count == 0:
 		return true

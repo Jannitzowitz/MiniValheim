@@ -5,13 +5,16 @@
 [ext_resource type="Material" uid="uid://d2t2d7gwepry" path="res://Items/material/Wood_Item/wood_material.tres" id="2_uuwpo"]
 [ext_resource type="ArrayMesh" uid="uid://f88n4lge1fal" path="res://Items/material/Wood_Item/wood_mesh.res" id="3_uuwpo"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ywubl"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_oi3di"]
 
 [resource]
 script = ExtResource("1_hajvi")
-name = "wood"
+name = "Wood"
+stack_size = 1
+durability = null
 icon = ExtResource("1_2nni5")
 material = ExtResource("2_uuwpo")
 mesh = ExtResource("3_uuwpo")
-shape = SubResource("BoxShape3D_ywubl")
+shape = SubResource("BoxShape3D_oi3di")
+mass = 1.0
 metadata/_custom_type_script = "uid://dhs4md63s8pvv"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b14blox1r6wo6"]
 
-[ext_resource type="Script" uid="uid://cj3wv88ravw25" path="res://entities/Items/_item_controller/item.gd" id="1_5xo7p"]
+[ext_resource type="Script" uid="uid://cj3wv88ravw25" path="res://Items/_item_controller/item.gd" id="1_5xo7p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fg5ve"]
 albedo_color = Color(1, 1, 0, 1)
@@ -12,6 +12,8 @@ material = SubResource("StandardMaterial3D_fg5ve")
 albedo_color = Color(0, 2.454227, 2.454227, 1)
 
 [node name="Item" type="RigidBody3D" unique_id=747342528 node_paths=PackedStringArray("collision_shape", "mesh", "mesh_outline")]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_5xo7p")
 collision_shape = NodePath("ItemCollision")
 mesh = NodePath("ItemMesh")
