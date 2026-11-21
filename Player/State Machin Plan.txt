@@ -1,0 +1,11 @@
+enum MOVMENT_STATE{
+	IDLE
+	CROUCHIDLE,
+	CROUCHWALK,
+	WALK,
+	SPRINT,
+}
+
+var current_movment_state = STATE.IDLE
+
+func 

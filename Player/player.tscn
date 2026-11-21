@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d3v616m5ab6gg"]
+
+[ext_resource type="Script" uid="uid://ljra67x602dy" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://dlvwlfmwud5ki" path="res://Universal Animation Library[Standard]/Unreal-Godot/UAL1_Standard.glb" id="2_4ntmi"]
+[ext_resource type="Script" uid="uid://bjxesqta184ch" path="res://Player/ual_1_standard.gd" id="3_btcbx"]
+[ext_resource type="PackedScene" uid="uid://qhlqpmn3g4al" path="res://Inventory/inventory_controller.tscn" id="4_gwnis"]
+[ext_resource type="Script" uid="uid://bcbochk8o1ovk" path="res://Player/interaction_ray_cast.gd" id="4_k53q1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ntmi"]
+radius = 0.29833984
+height = 1.8237305
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wenkw"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1423238593 node_paths=PackedStringArray("camera_pivot", "camera", "spring_arm", "player_mesh")]
+script = ExtResource("1_4ntmi")
+camera_pivot = NodePath("CameraPivot")
+camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
+spring_arm = NodePath("CameraPivot/SpringArm3D")
+player_mesh = NodePath("UAL1_Standard")
+
+[node name="UAL1_Standard" parent="." unique_id=1062204507 instance=ExtResource("2_4ntmi")]
+script = ExtResource("3_btcbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1497001105]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91186523, 0)
+shape = SubResource("CapsuleShape3D_4ntmi")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1834242719]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 1.7020193, 0)
+
+[node name="InteractionRayCast" type="RayCast3D" parent="CameraPivot" unique_id=67978613 node_paths=PackedStringArray("inventory_controller")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -3, 0)
+script = ExtResource("4_k53q1")
+inventory_controller = NodePath("../../InventoryController")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=273659180]
+transform = Transform3D(-1, 0, -8.7422784e-08, 0, 1.0000001, 0, 8.742278e-08, 0, -1.0000001, 0, 0, 0)
+shape = SubResource("SphereShape3D_wenkw")
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1317323811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.609638e-08, 0.2985078, 0.2985078)
+
+[node name="InventoryController" parent="." unique_id=2074713748 node_paths=PackedStringArray("interaction_ray_cast") instance=ExtResource("4_gwnis")]
+interaction_ray_cast = NodePath("../CameraPivot/InteractionRayCast")

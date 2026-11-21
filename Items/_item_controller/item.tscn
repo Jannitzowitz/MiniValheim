@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b14blox1r6wo6"]
+
+[ext_resource type="Script" uid="uid://cj3wv88ravw25" path="res://entities/Items/_item_controller/item.gd" id="1_5xo7p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fg5ve"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_muhh3"]
+material = SubResource("StandardMaterial3D_fg5ve")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1a6i"]
+albedo_color = Color(0, 2.454227, 2.454227, 1)
+
+[node name="Item" type="RigidBody3D" unique_id=747342528 node_paths=PackedStringArray("collision_shape", "mesh", "mesh_outline")]
+script = ExtResource("1_5xo7p")
+collision_shape = NodePath("ItemCollision")
+mesh = NodePath("ItemMesh")
+mesh_outline = NodePath("ItemMesh/OutlineMesh")
+
+[node name="ItemCollision" type="CollisionShape3D" parent="." unique_id=372272807]
+
+[node name="ItemMesh" type="MeshInstance3D" parent="." unique_id=956320177]
+mesh = SubResource("BoxMesh_muhh3")
+
+[node name="OutlineMesh" type="MeshInstance3D" parent="ItemMesh" unique_id=1507202280]
+visible = false
+material_override = SubResource("StandardMaterial3D_h1a6i")

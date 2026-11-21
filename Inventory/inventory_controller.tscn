@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://qhlqpmn3g4al"]
+
+[ext_resource type="Script" uid="uid://c5ru58ho7jijj" path="res://Inventory/inventory_controller.gd" id="1_806hx"]
+[ext_resource type="PackedScene" uid="uid://cjr6gy5eh1fmj" path="res://Inventory/inventory_slot.tscn" id="2_hmc6d"]
+[ext_resource type="Script" uid="uid://bay88oyfm7k7w" path="res://Inventory/world_dorp_data.gd" id="3_8fycf"]
+[ext_resource type="PackedScene" uid="uid://b14blox1r6wo6" path="res://Items/_item_controller/item.tscn" id="4_8fycf"]
+
+[node name="InventoryController" type="Node" unique_id=2074713748 node_paths=PackedStringArray("inventory_ui", "inventory_grid")]
+script = ExtResource("1_806hx")
+inventory_ui = NodePath("InventoryUI")
+inventory_grid = NodePath("InventoryUI/InventoryBackground/MarginContainer/InventoryGrid")
+inventory_slot_count = 20
+inventory_slot_prefab = ExtResource("2_hmc6d")
+
+[node name="WorldDorpData" type="Control" parent="." unique_id=1341843013 node_paths=PackedStringArray("inventory_controller")]
+visible = false
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_8fycf")
+World_Item = ExtResource("4_8fycf")
+inventory_controller = NodePath("..")
+
+[node name="InventoryUI" type="Control" parent="." unique_id=728504346]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="InventoryBackground" type="Panel" parent="InventoryUI" unique_id=1046138208]
+custom_minimum_size = Vector2(385, 305)
+layout_mode = 1
+offset_right = 385.0
+offset_bottom = 305.0
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryUI/InventoryBackground" unique_id=2131840817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="InventoryGrid" type="GridContainer" parent="InventoryUI/InventoryBackground/MarginContainer" unique_id=1115411287]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5

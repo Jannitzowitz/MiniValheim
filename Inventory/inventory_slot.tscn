@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cjr6gy5eh1fmj"]
+
+[ext_resource type="Script" uid="uid://xx6wtoxx2a5a" path="res://entities/Player/Inventory/inventory_slot.gd" id="1_r8gnc"]
+[ext_resource type="PackedScene" uid="uid://b14blox1r6wo6" path="res://entities/Items/_item_controller/item.tscn" id="2_cvfy4"]
+
+[node name="InventorySlot" type="Button" unique_id=1906082137 node_paths=PackedStringArray("texture_rect", "label")]
+custom_minimum_size = Vector2(70, 70)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_r8gnc")
+World_Item = ExtResource("2_cvfy4")
+texture_rect = NodePath("TextureRect")
+label = NodePath("Label")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1103406524]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=150055493]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
