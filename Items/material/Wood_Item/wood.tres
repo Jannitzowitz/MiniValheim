@@ -10,11 +10,11 @@
 [resource]
 script = ExtResource("1_hajvi")
 name = "Wood"
-stack_size = 1
+stack_size = 50
 durability = null
 icon = ExtResource("1_2nni5")
 material = ExtResource("2_uuwpo")
 mesh = ExtResource("3_uuwpo")
 shape = SubResource("BoxShape3D_oi3di")
-mass = 1.0
+mass = 10.0
 metadata/_custom_type_script = "uid://dhs4md63s8pvv"

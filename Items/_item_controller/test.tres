@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cpguhmjmem5kt"]
+
+[ext_resource type="Texture2D" uid="uid://dcy4gdp0gsla" path="res://icon.svg" id="1_4mjqr"]
+[ext_resource type="Script" uid="uid://dhs4md63s8pvv" path="res://Items/_item_controller/item_data.gd" id="1_o0oer"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mjqr"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xibb4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_518oq"]
+
+[resource]
+script = ExtResource("1_o0oer")
+name = "Test"
+icon = ExtResource("1_4mjqr")
+material = SubResource("StandardMaterial3D_4mjqr")
+mesh = SubResource("BoxMesh_xibb4")
+shape = SubResource("BoxShape3D_518oq")
+mass = 1.0
+metadata/_custom_type_script = "uid://dhs4md63s8pvv"

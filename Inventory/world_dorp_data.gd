@@ -14,13 +14,14 @@ func _input(event: InputEvent) -> void:
 			visible = true
 
 
-func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
-	return(true)
-
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	if data is InventorySlot:
+		return(true)
+	return(false)
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	var node = World_Item.instantiate()
-	var richtung: Vector3 = -inventory_controller.drop_position.global_transform.basis.z
+	var richtung: Vector3 = inventory_controller.drop_position.global_transform.basis.z
 	
 	node.set_meta("item_data",data.item)
 	
@@ -31,6 +32,6 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 		data.item = null
 		data.current_item_count = 0
 	node.global_position = inventory_controller.drop_position.global_position
-	node.linear_velocity = richtung * 5
+	node.linear_velocity = richtung * 10
 	
 	data.update_slot_ui()

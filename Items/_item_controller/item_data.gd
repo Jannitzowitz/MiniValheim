@@ -23,10 +23,10 @@ enum ItemTyp {
 
 # --- Stats ---
 @export_category("Stats")
-@export var healing: int
-@export var damage: int
-@export var stack_size: int 
-@export var durability: int
+@export var healing: int = 0
+@export var damage: int = 0
+@export var stack_size: int = 1
+@export var durability: int = 0
 
 # --- Visuals ---
 @export_group("Visuals")

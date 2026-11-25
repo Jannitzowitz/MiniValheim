@@ -64,8 +64,10 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	return self
 
 
-func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
-	return true
+func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
+	if data is InventorySlot:
+		return(true)
+	return(false)
 
 
 func _drop_data(_at_position: Vector2, data: Variant) -> void:
@@ -82,8 +84,3 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	data.texture_rect.show()
 	update_slot_ui()
 	data.update_slot_ui()
-
-func equip_weapon():
-	print(item.name)
-	var player = (get_tree().current_scene.get_node("Player"))
-	var weaponpoint = player.get_tree()

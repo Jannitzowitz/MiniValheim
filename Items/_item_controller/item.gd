@@ -16,6 +16,7 @@ func _ready() -> void:
 	mesh.material_override = item_data.material
 	mesh_outline.mesh = item_data.mesh.create_outline(0.03)
 	collision_shape.shape = item_data.shape
+	mass = item_data.mass
 	
 
 

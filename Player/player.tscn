@@ -22,6 +22,9 @@ player_mesh = NodePath("UAL1_Standard")
 [node name="UAL1_Standard" parent="." unique_id=1062204507 instance=ExtResource("2_4ntmi")]
 script = ExtResource("3_btcbx")
 
+[node name="DropPosition" type="Marker3D" parent="UAL1_Standard" unique_id=1620650725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4349518, 0.34232092)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1497001105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91186523, 0)
 shape = SubResource("CapsuleShape3D_4ntmi")
@@ -44,9 +47,6 @@ spring_length = 8.0
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1317323811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.609638e-08, 0.2985078, 0.2985078)
 
-[node name="DropPosition" type="Marker3D" parent="." unique_id=1620650725]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4349518, -0.0023092031)
-
 [node name="InventoryController" parent="." unique_id=2074713748 node_paths=PackedStringArray("interaction_ray_cast", "drop_position") instance=ExtResource("4_gwnis")]
 interaction_ray_cast = NodePath("../CameraPivot/InteractionRayCast")
-drop_position = NodePath("../DropPosition")
+drop_position = NodePath("../UAL1_Standard/DropPosition")
