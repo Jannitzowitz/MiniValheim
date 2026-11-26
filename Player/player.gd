@@ -202,3 +202,7 @@ func apply_movement(delta: float,input_direction: Vector2) -> void:
 		last_movement_direction = move_direction
 		var target_angle: float = Vector3.BACK.signed_angle_to(last_movement_direction, Vector3.UP)
 		player_mesh.global_rotation.y = lerp_angle(player_mesh.rotation.y, target_angle, rotation_speed * delta)
+
+
+func _on_hp_die() -> void:
+	print("die")

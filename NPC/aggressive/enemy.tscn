@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://vi8itcw3jdoq"]
+
+[ext_resource type="Script" uid="uid://b5yc5wx1ecccd" path="res://NPC/aggressive/enemy.gd" id="1_icoon"]
+[ext_resource type="PackedScene" uid="uid://dm4shpt6a375k" path="res://Player/Stats/hp.tscn" id="2_ld786"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wenkw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82qmm"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wenkw"]
+material = SubResource("StandardMaterial3D_82qmm")
+size = Vector3(0.8, 0.2, 0.4)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wenkw"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_82qmm"]
+height = 20.0
+radius = 20.0
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1159595479 node_paths=PackedStringArray("navigation_agent_3d", "attack_cooldown", "chase_area") groups=["Undead"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_icoon")
+navigation_agent_3d = NodePath("NavigationAgent3D")
+attack_cooldown = NodePath("Timer")
+chase_area = NodePath("ChaseArea")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=166812008]
+mesh = SubResource("CapsuleMesh_wenkw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1611071093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.3)
+mesh = SubResource("BoxMesh_wenkw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2130396004]
+shape = SubResource("CapsuleShape3D_wenkw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=839516671]
+
+[node name="Timer" type="Timer" parent="." unique_id=1984256288]
+
+[node name="ChaseArea" type="Area3D" parent="." unique_id=888959997]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ChaseArea" unique_id=374962869]
+shape = SubResource("CylinderShape3D_82qmm")
+
+[node name="Hp" parent="." unique_id=1437798122 instance=ExtResource("2_ld786")]
+
+[connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="die" from="Hp" to="." method="_on_hp_die"]

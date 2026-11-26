@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bjxesqta184ch" path="res://Player/ual_1_standard.gd" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://qhlqpmn3g4al" path="res://Inventory/inventory_controller.tscn" id="4_gwnis"]
 [ext_resource type="Script" uid="uid://bcbochk8o1ovk" path="res://Player/interaction_ray_cast.gd" id="4_k53q1"]
+[ext_resource type="PackedScene" uid="uid://dm4shpt6a375k" path="res://Player/Stats/hp.tscn" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4ntmi"]
 radius = 0.29833984
@@ -12,7 +13,7 @@ height = 1.8237305
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wenkw"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1423238593 node_paths=PackedStringArray("camera_pivot", "camera", "spring_arm", "player_mesh")]
+[node name="Player" type="CharacterBody3D" unique_id=1423238593 node_paths=PackedStringArray("camera_pivot", "camera", "spring_arm", "player_mesh") groups=["Player"]]
 script = ExtResource("1_4ntmi")
 camera_pivot = NodePath("CameraPivot")
 camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
@@ -50,3 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.609638e-08, 0.2985078, 0.2
 [node name="InventoryController" parent="." unique_id=2074713748 node_paths=PackedStringArray("interaction_ray_cast", "drop_position") instance=ExtResource("4_gwnis")]
 interaction_ray_cast = NodePath("../CameraPivot/InteractionRayCast")
 drop_position = NodePath("../UAL1_Standard/DropPosition")
+
+[node name="Hp" parent="." unique_id=1437798122 instance=ExtResource("6_fhl08")]
+
+[connection signal="die" from="Hp" to="." method="_on_hp_die"]

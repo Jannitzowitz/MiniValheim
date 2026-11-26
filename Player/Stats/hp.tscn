@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://sny544idsx3n" path="res://Player/Stats/hp.gd" id="1_w0tai"]
 
-[node name="HP" type="Node" unique_id=1437798122]
+[node name="Hp" type="Node" unique_id=1437798122]
 script = ExtResource("1_w0tai")
